@@ -1,8 +1,20 @@
 {
   "compilerOptions": {
+    "lib": ["es5", "es6"],
     "target": "es6",
+    "baseUrl": "./src",
     "module": "commonjs",
-    "sourceMap": true
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@route/*": ["route/*"],
+      "@service/*": ["service/*"],
+      "@controller/*": ["controller/*"], 
+      "@entity/*": ["entity/*"],
+      "@migration/*": ["migration/*"],
+      "@subscriber/*": ["subscriber/*"]
+    }
   },
   "include": [
     "src/**/*.ts"
