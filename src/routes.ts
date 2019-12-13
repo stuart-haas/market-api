@@ -4,6 +4,7 @@ import { AuthService } from '@service/AuthService'
 import { SessionController } from '@controller/SessionController'
 import { ViewController } from '@controller/ViewController'
 import { AssetController } from '@controller/AssetController'
+import { CartController } from '@controller/CartController'
 
 export const ApiRoutes = [
   {
@@ -31,16 +32,46 @@ export const ApiRoutes = [
     action: UserController.findBySession
   },
   {
-    path: "/images",
+    path: "/assets",
     method: "get",
     middleware: [],
     action: AssetController.findAll
   },
   {
-    path: "/images/upload",
+    path: "/assets/upload",
     method: "post",
     middleware: [ AssetController.uploadSingle ],
     action: AssetController.create
+  },
+  {
+    path: "/cart/add",
+    method: "post",
+    middleware: [],
+    action: CartController.add
+  },
+  {
+    path: "/cart/get",
+    method: "get",
+    middleware: [],
+    action: CartController.get
+  },
+  {
+    path: "/cart/update",
+    method: "put",
+    middleware: [],
+    action: CartController.update
+  },
+  {
+    path: "/cart/remove",
+    method: "delete",
+    middleware: [],
+    action: CartController.remove
+  },
+  {
+    path: "/cart/clear",
+    method: "delete",
+    middleware: [],
+    action: CartController.clear
   }
 ]
 
