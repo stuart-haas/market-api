@@ -11,6 +11,7 @@
       "@route/*": ["route/*"],
       "@service/*": ["service/*"],
       "@controller/*": ["controller/*"], 
+      "@util/*": ["util/*"], 
       "@entity/*": ["entity/*"],
       "@repository/*": ["repository/*"],
       "@migration/*": ["migration/*"],

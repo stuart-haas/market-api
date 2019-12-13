@@ -3,6 +3,7 @@ import { CartRoute } from '@route/api/CartRoute';
 import { UserRoute } from '@route/api/UserRoute';
 import { DashboardRoute } from '@route/view/DashboardRoute';
 import { FormRoute } from '@route/view/FormRoute'
+import { Array } from '@util/Array';
 
 const apiRoutes = [
   AssetRoute,
@@ -15,5 +16,5 @@ const viewRoutes = [
   FormRoute
 ]
 
-export const ApiRoutes = [].concat.apply([], apiRoutes)
-export const ViewRoutes = [].concat.apply([], viewRoutes)
+export const ApiRoutes = Array.flatten(apiRoutes)
+export const ViewRoutes = Array.flatten(viewRoutes)
