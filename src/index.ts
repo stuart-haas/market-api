@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser'
 import * as cors from 'cors'
 import * as helmet from 'helmet'
 import * as cookieParser from 'cookie-parser'
+import * as reload from 'reload'
 import * as dotenv from 'dotenv'
 import { createConnection, getConnection } from 'typeorm'
 import { ApiRoutes, ViewRoutes } from "./routes"
@@ -34,7 +35,7 @@ createConnection().then(async connection => {
     const repository = getConnection().getRepository(Session)
 
     app.use(session({
-      secret: 'secret',
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       store: new TypeormStore({ repository }),
@@ -59,6 +60,8 @@ createConnection().then(async connection => {
     })
 
     app.listen(3000)
+
+    reload(app)
 
     console.log("Express application is up and running on port 3000")
 

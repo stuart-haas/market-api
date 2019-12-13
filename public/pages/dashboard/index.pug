@@ -10,57 +10,6 @@ block content
       div.content
         p=`You are logged in as ${data.user.username}`
       a(href="/logout").button Logout
-    section.section
-      div.columns.is-vcentered.is-centered.is-desktop
-        div.column.is-half
-          form(action="/images/upload", method="post", enctype="multipart/form-data").dropzone#dropzoneForm
-    section.section
-      div#images.columns.is-multiline
-
+  
 block scripts
   script(type="text/javascript").
-
-    Dropzone.options.dropzoneForm = {
-      dictDefaultMessage: 'Drop file here or click to upload',
-      addRemoveLinks: true,
-      init: function () {
-        this.on("success", function(file, response) {
-          this.removeFile(file);
-          appendImage(response, response.data);
-        })
-      }
-    };
-    
-    function fetch(url, errorCallback, successCallback) {
-      $.ajax({
-        type: 'GET',
-        url: url,
-        error: errorCallback,
-        success: successCallback
-      });
-    }
-
-    function ajaxError(error) {
-      console.log(error);
-    }
-
-    function appendImage(image, data) {
-      var predictionData = JSON.parse(data);
-      var $el = 
-      '<div class="column is-2-desktop is-4-tablet">' +
-        '<figured class="image">' + 
-          '<img src="'+image.path+'">' +
-          '<figcaption>'+predictionData[0].payload[0].displayName + ": " + (predictionData[0].payload[0].classification.score * 100).toFixed(2)+"&#37;"+'</figcaption>' +
-        '</figure>' +
-      '</div>';
-      $('#images').append($el);
-    }
-
-    function appendImages(response) {
-      for(var i = 0; i < response.length; i ++) {
-        var image = response[i];
-        appendImage(image, image.prediction.data);
-      }
-    }
-
-    fetch('/images', ajaxError, appendImages);

@@ -1,8 +1,7 @@
-import { PrimaryGeneratedColumn, Column, Generated, Entity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Generated, Entity, CreateDateColumn, UpdateDateColumn, BaseEntity } from 'typeorm';
 
 @Entity()
-export class User {
-
+export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number
 
@@ -17,7 +16,11 @@ export class User {
 
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
     createdAt: Date
-
+  
     @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
     updatedAt: Date
+  
+    @Column()
+    @Generated("uuid")
+    uid: string
 }

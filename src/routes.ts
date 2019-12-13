@@ -3,8 +3,7 @@ import { UserController } from '@controller/UserController'
 import { AuthService } from '@service/AuthService'
 import { SessionController } from '@controller/SessionController'
 import { ViewController } from '@controller/ViewController'
-import { ImageController } from '@controller/ImageController'
-import { PredictionController } from '@controller/PredictionController'
+import { AssetController } from '@controller/AssetController'
 
 export const ApiRoutes = [
   {
@@ -34,14 +33,14 @@ export const ApiRoutes = [
   {
     path: "/images",
     method: "get",
-    middleware: [ ],
-    action: ImageController.findAll
+    middleware: [],
+    action: AssetController.findAll
   },
   {
     path: "/images/upload",
     method: "post",
-    middleware: [ ImageController.uploadSingle, ImageController.parseMetaData, ImageController.create, PredictionController.create ],
-    action: async (req, res) => { await res.send({ data: "Upload complete" }) }
+    middleware: [ AssetController.uploadSingle ],
+    action: AssetController.create
   }
 ]
 

@@ -12,6 +12,7 @@
       "@service/*": ["service/*"],
       "@controller/*": ["controller/*"], 
       "@entity/*": ["entity/*"],
+      "@repository/*": ["repository/*"],
       "@migration/*": ["migration/*"],
       "@subscriber/*": ["subscriber/*"]
     }
