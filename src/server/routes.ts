@@ -1,20 +1,14 @@
-import { AssetRoute } from '@route/api/AssetRoute';
-import { CartRoute } from '@route/api/CartRoute';
-import { UserRoute } from '@route/api/UserRoute';
-import { DashboardRoute } from '@route/view/DashboardRoute';
-import { FormRoute } from '@route/view/FormRoute'
+import { AssetRoute } from '@route/AssetRoute';
+import { CartRoute } from '@route/CartRoute';
+import { UserRoute } from '@route/UserRoute';
 import { Array } from '@util/Array';
 
-const apiRoutes = [
+const routes = [
   AssetRoute,
   CartRoute,
   UserRoute
 ]
 
-const viewRoutes = [
-  DashboardRoute,
-  FormRoute
-]
+export const BasePath = '/api'
 
-export const ApiRoutes = Array.flatten(apiRoutes)
-export const ViewRoutes = Array.flatten(viewRoutes)
+export const Routes = Array.flatten(routes)

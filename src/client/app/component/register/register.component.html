@@ -1,0 +1,40 @@
+<div class="container is-fluid">
+  <section class="section">
+    <div class="columns is-centered is-vcentered is-desktop">
+      <div class="column is-half">
+        <form #registerForm="ngForm" (submit)="onSubmit(registerForm)">
+          <div class="field">
+            <label for="username" class="label">Username</label>
+            <div class="control">
+              <input type="text" placeholder="Username" name="username" id="username" class="input" ngModel>
+            </div>
+          </div>
+          <div class="field">
+            <label for="email" class="label">Email</label>
+            <div class="control">
+              <input type="text" placeholder="Email" name="email" id="email" class="input" ngModel>
+            </div>
+          </div>
+          <div class="field">
+            <label for="password" class="label">Password</label>
+            <div class="control">
+              <input type="password" placeholder="Password" name="password" id="password" class="input" ngModel>
+            </div>
+          </div>
+          <div class="field">
+            <label for="passwordConf" class="label">Confirm Password</label>
+            <div class="control">
+              <input type="password" placeholder="Confirm Password" name="passwordConf" id="passwordConf" class="input" ngModel>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button type="submit" class="button is-link">Register</button>
+            </div>
+          </div>
+          <a class="button" href="/login">Login</a>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

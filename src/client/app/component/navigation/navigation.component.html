@@ -1,0 +1,10 @@
+<nav class="navbar has-shadow">
+  <div class="navbar-start">
+    <a href="/" class="navbar-item title is-3">Market</a>
+  </div>
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <p *ngIf="user">You are logged in as {{ user.username }}</p>
+    </div>
+  </div>
+</nav>

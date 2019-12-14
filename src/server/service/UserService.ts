@@ -5,6 +5,12 @@ import { check, validationResult } from 'express-validator'
 
 export class UserService {
 
+  public static validateUpdate = [
+    check('email', 'Your email is not valid').exists().isLength({min: 5}).trim().escape(),
+    check('password', 'Your password must be at least 5 characters').exists().isLength({min: 5}).trim().escape(),
+    check('passwordConf', 'Passwords do not match').custom((value, {req}) => (value == req.body.password)).trim().escape()
+  ]
+
   public static validateRegistration = [
     check('username', 'Your username must have more than 5 characters').exists().isLength({min: 5}).trim().escape().custom(value => {
       const userRepository = getManager().getRepository(User)

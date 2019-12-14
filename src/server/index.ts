@@ -8,7 +8,7 @@ import * as cookieParser from 'cookie-parser'
 import * as reload from 'reload'
 import * as dotenv from 'dotenv'
 import { createConnection, getConnection } from 'typeorm'
-import { ApiRoutes, ViewRoutes } from "./routes"
+import { BasePath, Routes } from './routes'
 import { TypeormStore } from 'typeorm-store'
 import { Session } from '@entity/session'
 
@@ -45,18 +45,12 @@ createConnection().then(async connection => {
       }
     }))
 
-    ApiRoutes.forEach(route => {
-        app[route.method](route.path, route.middleware, (req, res, next) => {
+    Routes.forEach(route => {
+        app[route.method](BasePath + route.path, route.middleware, (req, res, next) => {
           route.action(req, res)
               .then(() => next)
               .catch(err => next(err))
         })
-    })
-
-    ViewRoutes.forEach(route => {
-      app[route.method](route.path, route.middleware, (req, res, next) => {
-        route.action(req, res)
-      })
     })
 
     app.listen(3000)

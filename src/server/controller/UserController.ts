@@ -10,6 +10,19 @@ export class UserController {
     res.send(newUser)
   }
 
+  public static async update(req, res) {
+    const userRepository = getManager().getRepository(User)
+    
+    const user = await userRepository.update({ id: req.session.user.id }, {
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    })
+
+    const updatedUser = await userRepository.findOne(req.session.user.id)
+    res.send(updatedUser)
+  }
+
   public static async findById(req, res) {
     const userRepository = getManager().getRepository(User)
     const user = await userRepository.findOne(req.params.id)
@@ -23,6 +36,7 @@ export class UserController {
   }
 
   public static async findBySession(req, res) {
+
       const userRepository = getManager().getRepository(User)
       const user = await userRepository.findOne(req.session.user.id)
   
