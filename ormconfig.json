@@ -11,17 +11,17 @@
     "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
   },
   "entities": [
-     "src/entity/**/*.ts"
+     "src/server/entity/**/*.ts"
   ],
   "migrations": [
-     "src/migration/**/*.ts"
+     "src/server/migration/**/*.ts"
   ],
   "subscribers": [
-     "src/subscriber/**/*.ts"
+     "src/server/subscriber/**/*.ts"
   ],
   "cli": {
-     "entitiesDir": "src/entity",
-     "migrationsDir": "src/migration",
-     "subscribersDir": "src/subscriber"
+     "entitiesDir": "src/server/entity",
+     "migrationsDir": "src/server/migration",
+     "subscribersDir": "src/server/subscriber"
   }
 }

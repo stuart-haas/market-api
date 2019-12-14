@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
-    "lib": ["es5", "es6"],
     "target": "es6",
-    "baseUrl": "./src",
+    "baseUrl": "./src/server",
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": [
+      "es5", 
+      "es6"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "paths": {
       "@route/*": ["route/*"],
       "@service/*": ["service/*"],
@@ -19,7 +25,7 @@
     }
   },
   "include": [
-    "src/**/*.ts"
+    "src/server/**/*.ts"
   ],
   "exclude": [
     "node_modules"
